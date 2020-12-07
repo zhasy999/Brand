@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,10 +25,12 @@ public class BrandController {
         return (brand + " Already exist");
     }
 
+
     @GetMapping
     public List<Brand> allBrands(){
         return brandService.findAll();
     }
+
 
     @GetMapping("/{id}")
     public Brand findBrandById (@PathVariable("id") Long Id) {
